@@ -13,7 +13,7 @@ import java.util.Queue;
 import java.util.SequencedCollection;
 import java.util.Set;
 
-public class AStarAlgorithm<T, P> {
+public class AStarAlgorithm<P> {
 
     public static final BigDecimal INFINITY = BigDecimal.valueOf(Double.MAX_VALUE);
 

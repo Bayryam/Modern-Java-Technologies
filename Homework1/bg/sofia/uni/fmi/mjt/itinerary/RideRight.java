@@ -81,7 +81,7 @@ public class RideRight implements ItineraryPlanner {
     private void findCheapestPathWithTransfers(City start, City destination,
                                                SequencedCollection<Journey> cheapestPath) {
 
-        AStarAlgorithm<City, Journey> alg = new AStarAlgorithm<>();
+        AStarAlgorithm<Journey> alg = new AStarAlgorithm<>();
         CityNode startNode = new CityNode(start, BigDecimal.ZERO);
         CityNode destinationNode = new CityNode(destination, BigDecimal.ZERO);
 
