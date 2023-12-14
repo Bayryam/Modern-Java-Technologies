@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.SequencedCollection;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class AStarAlgorithm<T, P> {
     public SequencedCollection<AStarEdge<P>> aStar(AStarNode startNode, AStarNode endNote,
                                                    List<AStarEdge<P>> edges) {
 
-        PriorityQueue<AStarNode> openPriorityQueue = new PriorityQueue<>();
+        Queue<AStarNode> openPriorityQueue = new PriorityQueue<>();
         Set<AStarNode> closedSet = new HashSet<>();
         Map<AStarNode, AStarNode> cameFrom = new HashMap<>();
         Map<AStarNode, BigDecimal> gScore = new HashMap<>();
@@ -77,7 +78,7 @@ public class AStarAlgorithm<T, P> {
     private void evaluateNeighbors(AStarNode endNode,
                                    List<AStarEdge<P>> edges, AStarNode currentNode,
                                    Map<AStarNode, BigDecimal> gScore, Set<AStarNode> closedSet,
-                                   PriorityQueue<AStarNode> openPriorityQueue, Map<AStarNode,
+                                   Queue<AStarNode> openPriorityQueue, Map<AStarNode,
                                    AStarNode> cameFrom,
                                    Map<AStarNode, BigDecimal> fScore) {
 
@@ -103,7 +104,7 @@ public class AStarAlgorithm<T, P> {
                                          Map<AStarNode, AStarNode> cameFrom, AStarNode neighbor,
                                          AStarNode currentNode, Map<AStarNode, BigDecimal> gScore,
                                          BigDecimal tentativeGScore, Map<AStarNode, BigDecimal> fScore,
-                                         PriorityQueue<AStarNode> openPriorityQueue) {
+                                         Queue<AStarNode> openPriorityQueue) {
 
         cameFrom.put(neighbor, currentNode);
         gScore.put(neighbor, tentativeGScore);
@@ -116,7 +117,7 @@ public class AStarAlgorithm<T, P> {
 
     private void prepareTheAlgorithm(AStarNode start, AStarNode destination, List<AStarEdge<P>> schedule,
                                      Map<AStarNode, BigDecimal> gScore, Map<AStarNode, BigDecimal> fScore,
-                                     PriorityQueue<AStarNode> openPriorityQueue) {
+                                     Queue<AStarNode> openPriorityQueue) {
 
         gScore.put(start, BigDecimal.ZERO);
         fScore.put(start, calculateHeuristic(start, destination, schedule));
@@ -129,7 +130,7 @@ public class AStarAlgorithm<T, P> {
 
         Map<AStarNode, BigDecimal> remainingWeights = new HashMap<>();
         Set<AStarNode> visited = new HashSet<>();
-        PriorityQueue<AStarNode> queue = new PriorityQueue<>();
+        Queue<AStarNode> queue = new PriorityQueue<>();
 
         queue.offer(currentNode);
 
@@ -153,7 +154,7 @@ public class AStarAlgorithm<T, P> {
     }
 
     private void updateRemainingWeights(List<AStarEdge<P>> edges, Map<AStarNode, BigDecimal> remainingWeights,
-                                        PriorityQueue<AStarNode> queue, AStarNode current) {
+                                        Queue<AStarNode> queue, AStarNode current) {
 
         for (AStarEdge<P> edge : edges) {
 
@@ -198,6 +199,3 @@ public class AStarAlgorithm<T, P> {
     }
 
 }
-
-
-

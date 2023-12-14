@@ -8,5 +8,4 @@ public interface AStarNode {
     void setFScore(BigDecimal fScore);
 
     String getValueName();
-
 }
